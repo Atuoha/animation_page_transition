@@ -6,15 +6,16 @@ import '../component/circle_background.dart';
 import '../models/item.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+  const DetailsScreen({Key? key, required this.item}) : super(key: key);
   static const routeName = '/details';
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<ItemData>(context);
-    var data =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    var item = provider.findById(data['id'] as int);
+    // var data =
+    //     ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    // var item = provider.findById(data['id'] as int);
     Size size = MediaQuery.of(context).size;
 
     SystemChrome.setSystemUIOverlayStyle(
@@ -31,7 +32,7 @@ class DetailsScreen extends StatelessWidget {
         // leadingWidth: 43,
         leading: Builder(builder: (context) {
           return Padding(
-            padding: const EdgeInsets.only(left:15.0),
+            padding: const EdgeInsets.only(left: 15.0),
             child: CircleBackground(
               child: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -42,7 +43,7 @@ class DetailsScreen extends StatelessWidget {
         }),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right:18.0),
+            padding: const EdgeInsets.only(right: 18.0),
             child: CircleBackground(
               child: IconButton(
                 onPressed: () => provider.toggleIsFav(item),
@@ -82,7 +83,10 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Text(item.subtitle,textAlign: TextAlign.justify,),
+                Text(
+                  item.subtitle,
+                  textAlign: TextAlign.justify,
+                ),
               ],
             ),
           )

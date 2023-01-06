@@ -3,8 +3,8 @@ import 'package:page_transition/component/single_item.dart';
 import '../data/list_items.dart';
 import '../models/item.dart';
 import '../screens/details.dart';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:animations/animations.dart';
 
 class ItemGridView extends StatelessWidget {
   const ItemGridView({
@@ -25,12 +25,25 @@ class ItemGridView extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         var item = items[index];
-        return GestureDetector(
-          onTap: () => Navigator.of(context).pushNamed(
-            DetailsScreen.routeName,
-            arguments: {'id': item.id},
+        return
+            // GestureDetector(
+            //   onTap: () => Navigator.of(context).pushNamed(
+            //     DetailsScreen.routeName,
+            //     arguments: {'id': item.id},
+            //  ),
+            //  child:
+
+            OpenContainer(
+          transitionDuration: const Duration(seconds: 3),
+          transitionType: ContainerTransitionType.fadeThrough,
+          openBuilder: (BuildContext context, _) => DetailsScreen(item: item),
+          closedBuilder:
+              (BuildContext context, void Function() openContainer) =>
+                  SingleItem(
+            item: item,
+            provider: provider,
           ),
-          child: SingleItem(item: item, provider: provider),
+          //  ),
         );
       },
     );
