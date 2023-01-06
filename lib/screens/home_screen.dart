@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../component/floating_button.dart';
 import '../component/item_grid_view.dart';
 import '../data/list_items.dart';
 
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
     var provider = Provider.of<ItemData>(context);
     var items = provider.listItems;
     return Scaffold(
+      floatingActionButton: const FlBtn(),
       appBar: AppBar(
         title: const Text('Iphones'),
       ),

@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           theme: ThemeData(
             primarySwatch: Colors.deepPurple,
+            primaryColor: Colors.deepPurple,
           ),
           home: const HomeScreen(),
           routes: {
