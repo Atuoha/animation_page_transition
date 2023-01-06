@@ -48,7 +48,7 @@ class DetailsScreen extends StatelessWidget {
                 onPressed: () => provider.toggleIsFav(item),
                 icon: Icon(
                   item.isFav ? Icons.favorite : Icons.favorite_border,
-                  color: item.isFav ? Colors.red : Colors.white,
+                  color: item.isFav ? Colors.red : Colors.deepPurple,
                 ),
               ),
             ),
